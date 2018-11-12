@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Person.css';
 
 export const Test = () => {
 	return <p>This is a test!</p>;
@@ -6,7 +7,7 @@ export const Test = () => {
 
 const person = (props) => {
 	return (
-		<div>
+		<div className="Person">
 			<p onClick={props.click}>I am {props.name} and I'm {props.age} years old!</p>
 			<p>{props.children}</p>
 			<input type="text" onChange={props.changed} />
@@ -17,5 +18,4 @@ const person = (props) => {
 
 
 export default person;
-
 
