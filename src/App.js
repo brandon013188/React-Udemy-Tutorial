@@ -67,8 +67,10 @@ class App extends Component {
 
 
   render() {
+
+    // this inline styling can not use pseudo selectors e.g. button:hovers
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'grey',
       font: 'inherit', 
       padding: '8px',
       cursor: 'pointer'
@@ -100,6 +102,8 @@ class App extends Component {
           })}
         </div>
       );
+
+      style.backgroundColor = 'white';
     }
 
           
@@ -109,7 +113,7 @@ class App extends Component {
         <h1>Hi, I'm a React App</h1>
         <button 
           style={style}
-          onClick={this.togglePersonsHandler}>Switch Name</button>
+          onClick={this.togglePersonsHandler}>Toggle Persons</button>
           {persons}
       </div>
       );
