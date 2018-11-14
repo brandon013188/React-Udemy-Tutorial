@@ -6,7 +6,7 @@ import './App.css';
 
 // Note: radium is a popular package for react which allows to use inline styles with 
 //       pseudo selectors and media queries.
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 import Person from './Person/Person.js';
 
@@ -137,14 +137,17 @@ class App extends Component {
           
     return (
       // Only allow one root element here.
-      <div className='App'>
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button 
-          style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
-          {persons}
-      </div>
+      // StyleRoot is needed for media queries
+      <StyleRoot>
+        <div className='App'>
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button 
+            style={style}
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+            {persons}
+        </div>
+      </StyleRoot>
       );
 
     // Note: render for null will be empty, thus null in JXS will be empty.
