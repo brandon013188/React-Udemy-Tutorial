@@ -6,7 +6,7 @@ import './App.css';
 
 // Note: radium is a popular package for react which allows to use inline styles with 
 //       pseudo selectors and media queries.
-import Radium, { StyleRoot } from 'radium';
+// import Radium, { StyleRoot } from 'radium';
 
 import Person from './Person/Person.js';
 
@@ -81,10 +81,10 @@ class App extends Component {
       cursor: 'pointer',
 
       // with Radium, it works 
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      // ':hover': {
+      //   backgroundColor: 'lightgreen',
+      //   color: 'black'
+      // }
     }; 
 
     let persons = null;
@@ -116,11 +116,11 @@ class App extends Component {
 
       style.backgroundColor = 'white';
 
-      // As the key is a string rather than a property, so could not use style.property
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      // Radium - As the key is a string rather than a property, so could not use style.property
+      // style[':hover'] = {
+      //   backgroundColor: 'salmon',
+      //   color: 'black'
+      // }
     }
 
     // let classes = ['red', 'bold'].join(' '); // output 'red bold'
@@ -138,7 +138,17 @@ class App extends Component {
     return (
       // Only allow one root element here.
       // StyleRoot is needed for media queries
-      <StyleRoot>
+      // <StyleRoot>
+      //   <div className='App'>
+      //     <h1>Hi, I'm a React App</h1>
+      //     <p className={classes.join(' ')}>This is really working!</p>
+      //     <button 
+      //       style={style}
+      //       onClick={this.togglePersonsHandler}>Toggle Persons</button>
+      //       {persons}
+      //   </div>
+      // </StyleRoot>
+
         <div className='App'>
           <h1>Hi, I'm a React App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
@@ -147,7 +157,6 @@ class App extends Component {
             onClick={this.togglePersonsHandler}>Toggle Persons</button>
             {persons}
         </div>
-      </StyleRoot>
       );
 
     // Note: render for null will be empty, thus null in JXS will be empty.
@@ -170,4 +179,8 @@ class App extends Component {
 
 // Note: use the Radium as a function to wrap up the App which called (HOC)High-Order Component
 //       and what it does is to inject some extra functions.
-export default Radium(App);
+// export default Radium(App);
+
+export default App;
+
+
