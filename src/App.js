@@ -3,7 +3,7 @@
 // the React library.
 import React, { Component } from 'react';
 import './App.css';
-import Person, {Test} from './Person/Person.js';
+import Person from './Person/Person.js';
 
 class App extends Component {
   state = {
@@ -12,17 +12,28 @@ class App extends Component {
       {id: 'key2', name: 'Manu', age: 29},
       {id: 'key3', name: 'brandon', age: 20}
     ],
-    showPersons: false
+    showPersons: false    
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons:[
-        {name: 'Max', age: 30},
-        {name: event.target.value, age: 29},
-        {name: 'brandon', age: 20}
-      ]
+  nameChangedHandler = (event, id) => {
+    // console.log("Para:" + id);
+    const personIndex = this.state.persons.findIndex(person => {
+      return person.id === id;
     });
+    // console.log("index:" + personIndex);
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    person.name = event.target.value;
+     // console.log(person);
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    // console.log(persons);
+
+    this.setState({ persons: persons});
+    // console.log(this.state.persons);
   }
 
   deletePersonHandler = (personIndex) => {
@@ -81,9 +92,10 @@ class App extends Component {
             return (
               <Person 
                 click={() => this.deletePersonHandler(index)}
-                name={person.name} 
-                age={person.age} 
-                key={person.id}/>
+                name={ person.name } 
+                age={ person.age } 
+                key={ person.id }
+                changed={(event) => this.nameChangedHandler(event, person.id)}/>
               );
           })}
         </div>
