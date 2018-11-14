@@ -106,11 +106,23 @@ class App extends Component {
       style.backgroundColor = 'white';
     }
 
+    // let classes = ['red', 'bold'].join(' '); // output 'red bold'
+    let classes = [];
+    if (this.state.persons.length <= 2) {
+      // push to array
+      classes.push('red'); // clasess = ['red']
+    }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold'); // classes = ['red', 'bold']
+    }
+
           
     return (
       // Only allow one root element here.
       <div className='App'>
         <h1>Hi, I'm a React App</h1>
+        <p className={classes.join(' ')}>This is really working!</p>
         <button 
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
