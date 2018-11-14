@@ -3,6 +3,11 @@
 // the React library.
 import React, { Component } from 'react';
 import './App.css';
+
+// Note: radium is a popular package for react which allows to use inline styles with 
+//       pseudo selectors and media queries.
+import Radium from 'radium';
+
 import Person from './Person/Person.js';
 
 class App extends Component {
@@ -73,7 +78,13 @@ class App extends Component {
       backgroundColor: 'grey',
       font: 'inherit', 
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+
+      // with Radium, it works 
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     }; 
 
     let persons = null;
@@ -104,6 +115,12 @@ class App extends Component {
       );
 
       style.backgroundColor = 'white';
+
+      // As the key is a string rather than a property, so could not use style.property
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
 
     // let classes = ['red', 'bold'].join(' '); // output 'red bold'
@@ -147,4 +164,7 @@ class App extends Component {
   }
 }
 
-export default App;
+
+// Note: use the Radium as a function to wrap up the App which called (HOC)High-Order Component
+//       and what it does is to inject some extra functions.
+export default Radium(App);
