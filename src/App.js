@@ -8,9 +8,9 @@ import Person, {Test} from './Person/Person.js';
 class App extends Component {
   state = {
     persons: [
-      {name: 'Max', age: 30},
-      {name: 'Manu', age: 29},
-      {name: 'brandon', age: 20}
+      {id: 'key1', name: 'Max', age: 30},
+      {id: 'key2', name: 'Manu', age: 29},
+      {id: 'key3', name: 'brandon', age: 20}
     ],
     showPersons: false
   }
@@ -65,6 +65,15 @@ class App extends Component {
 
     let persons = null;
 
+    // Note: the key property is recommended for output the list elements and it makes 
+    //       the render method more efficient. The reason behind the scene is that 
+    //       without the key property, the render method will need to find which element 
+    //       has been changed and re-render the whole list. While, with the key propety, 
+    //       react will know exactly which element changed and only re-render the sepecific 
+    //       element which will make the render method more efficient. 
+
+    // Note: the key must be unique.  
+
     if (this.state.showPersons) {
       persons = (
         <div>
@@ -73,12 +82,14 @@ class App extends Component {
               <Person 
                 click={() => this.deletePersonHandler(index)}
                 name={person.name} 
-                age={person.age} />
+                age={person.age} 
+                key={person.id}/>
               );
           })}
         </div>
       );
     }
+
           
     return (
       // Only allow one root element here.
