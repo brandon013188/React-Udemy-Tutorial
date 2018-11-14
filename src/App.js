@@ -26,11 +26,26 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons;
+    // const persons = this.state.persons;
 
+    // Note: we dont want to manipulate persons directly.
+    //       In the example above, we get a pointer to the persons object, a pointer
+    //       is a reference, by doing the persons.splice(personIndex, 1) we have
+    //       already mutated the original state which is a bad practice as it may lead
+    //       unpredictive impacts. 
+
+    // // slice method is to copy to a new array 
+    // const persons = this.state.persons.slice();
+    
+    // ES6 
+    const persons = [...this.state.persons];
     // splice is to delete the current index
     persons.splice(personIndex, 1);
     this.setState({ persons: persons});
+
+    // Takeaway: should always update the state in a unmutable fashion, thus always keeps
+    //           the original state untounched, like the principle in redux
+
   }
 
   togglePersonsHandler = () => {
