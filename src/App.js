@@ -11,7 +11,8 @@ class App extends Component {
       {name: 'Max', age: 30},
       {name: 'Manu', age: 29},
       {name: 'brandon', age: 20}
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -36,6 +37,14 @@ class App extends Component {
     });
   }
 
+  togglePersonsHandler = () => {
+    this.setState({
+      showPersons: !this.state.showPersons
+    });
+  };
+
+
+
   render() {
     const style = {
       backgroundColor: 'white',
@@ -44,29 +53,34 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+
     return (
       // Only allow one root element here.
       <div className='App'>
         <h1>Hi, I'm a React App</h1>
         <button 
           style={style}
-          onClick={() => this.switchNameHandler("Brandon")}>Switch Name</button>
-        <Person 
-          name={this.state.persons[0].name} 
-          age={this.state.persons[0].age}/>
-        <Person 
-          name={this.state.persons[1].name} 
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler.bind(this, "Not Brandon")}
-          changed={this.nameChangedHandler}
-        >
-          My Hobbies: Racing
-        </Person>
-        <Person 
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}/>
+          onClick={this.togglePersonsHandler}>Switch Name</button>
+          {this.state.showPersons ? <div>
+            <Person 
+              name={this.state.persons[0].name} 
+              age={this.state.persons[0].age}/>
+            <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age}
+              click={this.switchNameHandler.bind(this, "Not Brandon")}
+              changed={this.nameChangedHandler}>
+              My Hobbies: Racing
+            </Person>
+            <Person 
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}/>
+          </div>: null}
+        
       </div>
       );
+
+    // Note: render for null will be empty, thus null in JXS will be empty.
 
     // 1. The JSX code 
     //
