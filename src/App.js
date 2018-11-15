@@ -2,7 +2,9 @@
 // translate the code into React related code behind the scene. And the <div>, <h1> and etc are come from
 // the React library.
 import React, { Component } from 'react';
-import './App.css';
+
+// Do not use classes
+import Styles from './App.module.css';
 
 // Note: radium is a popular package for react which allows to use inline styles with 
 //       pseudo selectors and media queries.
@@ -149,7 +151,7 @@ class App extends Component {
       //   </div>
       // </StyleRoot>
 
-        <div className='App'>
+        <div className={Styles.App}>
           <h1>Hi, I'm a React App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
           <button 
