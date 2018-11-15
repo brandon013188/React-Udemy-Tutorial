@@ -12,6 +12,15 @@ const person = (props) => {
 	// 		width: '450px'
 	// 	}
 	// };
+
+	// Error handling 
+	const rnd = Math.random();
+
+	if (rnd > 0.7) {
+		throw new Error('Something went wrong!');
+	}
+
+
 	return (
 		// For Radium 
 		// <div className="Person" style={style}>

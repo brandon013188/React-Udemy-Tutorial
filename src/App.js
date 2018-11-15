@@ -11,7 +11,8 @@ import classes from './App.module.css';
 //       pseudo selectors and media queries.
 // import Radium, { StyleRoot } from 'radium';
 
-import Person from './Person/Person.js';
+import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
   state = {
@@ -101,19 +102,22 @@ class App extends Component {
     //       react will know exactly which element changed and only re-render the sepecific 
     //       element which will make the render method more efficient. 
 
-    // Note: the key must be unique.  
+    // Note: the key must be unique. 
+    // Note: The ErrorBoundry is a Higher-Order Component. So it wrap around the target component
+    //       and handle any error the element may throw. And the key should be always placed at the 
+    //       outer element, thus move the key from Person to ErrorBoundary.  
 
     if (this.state.showPersons) {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <Person 
+              <ErrorBoundary key={ person.id } ><Person 
                 click={() => this.deletePersonHandler(index)}
                 name={ person.name } 
                 age={ person.age } 
-                key={ person.id }
                 changed={(event) => this.nameChangedHandler(event, person.id)}/>
+              </ErrorBoundary>
               );
           })}
         </div>
@@ -159,7 +163,7 @@ class App extends Component {
         <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
           <p className={assignedClasses.join(' ')}>This is really working!</p>
-          <button class={btnClass}
+          <button className={btnClass}
             // style={style}
             onClick={this.togglePersonsHandler}>Toggle Persons</button>
             {persons}
