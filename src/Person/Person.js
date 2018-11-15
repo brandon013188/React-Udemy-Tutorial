@@ -15,6 +15,9 @@ const person = (props) => {
 	return (
 		// For Radium 
 		// <div className="Person" style={style}>
+
+		// Using the CSS Module it will automatically generate a unqiue class name which is 
+		// no longer Person class but something like Person_Person_ash5_1 
 		<div className={classes.Person}>
 			<p onClick={props.click}>I am {props.name} and I'm {props.age} years old!</p>
 			<p>{props.children}</p>
