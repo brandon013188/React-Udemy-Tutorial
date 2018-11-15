@@ -3,7 +3,8 @@
 // the React library.
 import React, { Component } from 'react';
 
-// Use hash to generate unqiue class name, thus the other component use the same css file won't be effected
+// Use hash to generate unqiue class name, thus the other component use the same css file won't be effected.
+// The classname is scoped to the only given component as the classname is unqiue
 import classes from './App.module.css';
 
 // Note: radium is a popular package for react which allows to use inline styles with 
