@@ -6,3 +6,9 @@
 	padding: 16px;
 	text-align: center;
 }
+
+/*
+* For global define the class use the key word ":global" as the prefix
+* e.g. :global .Person {.....};
+* Thus you could use className="Person" anywhere in your app
+*/
