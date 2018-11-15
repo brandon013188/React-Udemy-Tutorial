@@ -14,9 +14,9 @@ const person = (props) => {
 	// };
 
 	// Error handling 
-	const rnd = Math.random();
+	const rnd = Math.random()*Math.random();
 
-	if (rnd > 0.7) {
+	if (rnd > 0.8) {
 		throw new Error('Something went wrong!');
 	}
 
