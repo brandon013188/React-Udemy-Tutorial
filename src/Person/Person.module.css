@@ -12,3 +12,9 @@
 * e.g. :global .Person {.....};
 * Thus you could use className="Person" anywhere in your app
 */
+
+@media (min-width: 500px) {
+	.Person {
+		width: 450px;
+	}
+}
