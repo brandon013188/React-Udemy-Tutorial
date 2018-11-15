@@ -1,5 +1,5 @@
 import React from 'react';
-import './Person.css';
+import classes from './Person.module.css';
 // import Radium from 'radium';
 
 export const Test = () => {
@@ -15,7 +15,7 @@ const person = (props) => {
 	return (
 		// For Radium 
 		// <div className="Person" style={style}>
-		<div className="Person">
+		<div className={classes.Person}>
 			<p onClick={props.click}>I am {props.name} and I'm {props.age} years old!</p>
 			<p>{props.children}</p>
 			<input type="text" value={props.name} onChange={props.changed} />

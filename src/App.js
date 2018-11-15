@@ -3,8 +3,8 @@
 // the React library.
 import React, { Component } from 'react';
 
-// Do not use classes
-import Styles from './App.module.css';
+// Use hash to generate unqiue class name, thus the other component use the same css file won't be effected
+import classes from './App.module.css';
 
 // Note: radium is a popular package for react which allows to use inline styles with 
 //       pseudo selectors and media queries.
@@ -126,14 +126,14 @@ class App extends Component {
     }
 
     // let classes = ['red', 'bold'].join(' '); // output 'red bold'
-    let classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
       // push to array
-      classes.push('red'); // clasess = ['red']
+      assignedClasses.push(classes.red); // clasess = ['red']
     }
 
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); // classes = ['red', 'bold']
     }
 
           
@@ -151,9 +151,9 @@ class App extends Component {
       //   </div>
       // </StyleRoot>
 
-        <div className={Styles.App}>
+        <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
-          <p className={classes.join(' ')}>This is really working!</p>
+          <p className={assignedClasses.join(' ')}>This is really working!</p>
           <button 
             style={style}
             onClick={this.togglePersonsHandler}>Toggle Persons</button>
