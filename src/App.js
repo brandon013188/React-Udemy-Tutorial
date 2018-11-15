@@ -92,6 +92,8 @@ class App extends Component {
 
     let persons = null;
 
+    let btnClass = '';
+
     // Note: the key property is recommended for output the list elements and it makes 
     //       the render method more efficient. The reason behind the scene is that 
     //       without the key property, the render method will need to find which element 
@@ -117,7 +119,9 @@ class App extends Component {
         </div>
       );
 
-      style.backgroundColor = 'white';
+      btnClass = classes.Red;
+
+      // style.backgroundColor = 'white';
 
       // Radium - As the key is a string rather than a property, so could not use style.property
       // style[':hover'] = {
@@ -155,8 +159,8 @@ class App extends Component {
         <div className={classes.App}>
           <h1>Hi, I'm a React App</h1>
           <p className={assignedClasses.join(' ')}>This is really working!</p>
-          <button 
-            style={style}
+          <button class={btnClass}
+            // style={style}
             onClick={this.togglePersonsHandler}>Toggle Persons</button>
             {persons}
         </div>
